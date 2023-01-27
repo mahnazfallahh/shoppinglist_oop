@@ -1,8 +1,7 @@
 import json
 import logging.config
 from dataclasses import dataclass
-from helper.exceptions import PasswordIsShort
-from helper.messages import NameISNotStringException
+from helper.exceptions import PasswordIsShort, NameISNotStringException
 
 register:dict = dict()
 

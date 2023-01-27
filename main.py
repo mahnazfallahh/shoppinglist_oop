@@ -16,7 +16,6 @@ AddCategoryMessage as add,
 RemoveCategoryItemsMessage as remove,
 EditCategoryMessage as edit,
 SearchCategoryMessage as search,)
-
 cosmetics_bill: list = list()
 vegetable_bill: list = list()
 grocery_bill: list = list()

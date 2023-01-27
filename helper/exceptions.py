@@ -1,3 +1,5 @@
+
+
 class PasswordIsShort(ValueError):
     """ class PasswordIsShort
     Parameters
@@ -12,6 +14,7 @@ class PasswordIsShort(ValueError):
         self
     """
         return "password is too short . "
+
 
 class NameISNotStringException(TypeError):
     """ class NameISNotStringException
