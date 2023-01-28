@@ -1,5 +1,4 @@
 import os
-import json
 import logging.config
 from userHelp import Help
 from getpass import getpass
@@ -7,22 +6,25 @@ from shoppingList import Product
 from user import User, EnterUserName
 from helper.enums import ExitCommands, DiscountCodes
 from helper.exceptions import PasswordIsShort, NameISNotStringException
-from helper.messages import (ExitShoppingListMessage as msg,
-RemoveCategoryItemsMessage as remove,
-DisplayCategoryMessage as category,
-RaiseValidOptionMessage as message,
-DisplayBuyCategoryMessage as buy,
-DisplayBalanceMessage as balance,
-SearchCategoryMessage as search,
-EditCategoryMessage as edit,
-AddCategoryMessage as add,
-DisplayUserQuestion as name)
+from helper.messages import (
+    ExitShoppingListMessage as msg,
+    RemoveCategoryItemsMessage as remove,
+    DisplayCategoryMessage as category,
+    RaiseValidOptionMessage as message,
+    DisplayBuyCategoryMessage as buy,
+    DisplayBalanceMessage as balance,
+    SearchCategoryMessage as search,
+    EditCategoryMessage as edit,
+    AddCategoryMessage as add,
+    DisplayUserQuestion as name
+)
+
 cosmetics_bill: list = list()
 vegetable_bill: list = list()
 grocery_bill: list = list()
 
 
-logging.config.fileConfig(fname='Log/config.toml', disable_existing_loggers=False)  #noqa:E501
+logging.config.fileConfig(fname='Log/config.toml', disable_existing_loggers=False)  # noqa:E501
 logger = logging.getLogger(__name__)
 
 
@@ -37,21 +39,21 @@ while True:
     else:
         information = EnterUserName(first_name, last_name)
         print(f"Hi {information} . welcome to shopping list. ")
-        logger.info(f'user {first_name} {last_name} arrived into shopping list . ')  #noqa E501
+        logger.info(f'user {first_name} {last_name} arrived into shopping list .')  # noqa E501
         logger.info(f"os user name: {os.getlogin()}")
-        break        
+        break
 os.system('pause')
 
 
 is_authenticated = False
-while is_authenticated == False:
+while is_authenticated is False:
     try:
         print('please enter one option in line below')
         print('1) register  2) login')
         option = input('enter number of option :')
         if option == '1':
             is_registered = False
-            while is_registered == False:
+            while is_registered is False:
                 username = input('enter username :')
                 if not len(username.strip()):
                     print('OOoops !! invalid option , please try again .')
@@ -68,7 +70,7 @@ while is_authenticated == False:
                     is_registered = True
         elif option == '2':
             is_login = False
-            while is_login == False:
+            while is_login is False:
                 username = input('enter username :')
                 if not len(username.strip()):
                     print('OOoops !! invalid option , please try again .')
@@ -78,12 +80,12 @@ while is_authenticated == False:
                     is_authenticated = True
                     is_login = True
     except PasswordIsShort as e:
-            print(e)
+        print(e)
 Help().display_help()
 
 
 while True:
-    print("\N{pushpin}", "\N{pushpin}", "\N{pushpin}", "\N{pushpin}", "\N{pushpin}", "\N{pushpin}", "\N{pushpin}", "\N{pushpin}")
+    print("\N{pushpin}", "\N{pushpin}", "\N{pushpin}", "\N{pushpin}", "\N{pushpin}", "\N{pushpin}", "\N{pushpin}", "\N{pushpin}") # noqa E501
     option = input('please enter one option :')
     for command in ExitCommands:
         value = command.name
@@ -118,20 +120,20 @@ while True:
         if question == '1':
             grocery: str = 'grocery'
             with open('database/grocery-items.json') as groceries:
-                Product().buy_categories(groceries, grocery_bill, grocery, account_balance)  #noqa E501
+                Product().buy_categories(groceries, grocery_bill, grocery, account_balance)  # noqa E501
         elif question == '2':
             cosmetic: str = 'cosmetic'
             with open('database/cosmetics-items.json') as cosmetics:
-                Product().buy_categories(cosmetics, cosmetics_bill, cosmetic, account_balance)  #noqa E501
+                Product().buy_categories(cosmetics, cosmetics_bill, cosmetic, account_balance)  # noqa E501
         elif question == '3':
             vegetable: str = 'vegetable'
             with open('database/vegetable-items.json') as vegetables:
-                Product().buy_categories(vegetables, vegetable_bill, vegetable, account_balance)  #noqa E501
+                Product().buy_categories(vegetables, vegetable_bill, vegetable, account_balance)  # noqa E501
         else:
-            print(message.VALID_MESSAGE)   
+            print(message.VALID_MESSAGE)
     elif option == 'add':
         print("\N{money bag}")
-        question:str = input(add.ADD_CATEGORY_QUESTION).casefold()
+        question: str = input(add.ADD_CATEGORY_QUESTION).casefold()
         # call clearscreen fnc()
         # clear_screen()
         # condition if question equal to 1
@@ -145,9 +147,9 @@ while True:
             items_number: int = int(input(add.NUMBER_ITEM_QUESTION))
             Product().add_vegetable(items_number)
         else:
-            print(message.VALID_MESSAGE)    
+            print(message.VALID_MESSAGE)
     elif option == 'show':
-        question:str = input(category.DISPLAY_MESSAGE)
+        question: str = input(category.DISPLAY_MESSAGE)
         # clear_screen()
         if question == '2':
             with open('database/cosmetics-items.json', 'r') as files:
@@ -161,7 +163,7 @@ while True:
         else:
             print(message.VALID_MESSAGE)
     elif option == 'remove':
-        question:str = input(remove.REMOVE_CATEGORY_QUESTION)
+        question: str = input(remove.REMOVE_CATEGORY_QUESTION)
         if question == '1':
             item = input(remove.REMOVE_ITEM_QUESTION)
             Product().remove_grocery(item)
@@ -174,7 +176,7 @@ while True:
         else:
             print(message.VALID_MESSAGE)
     elif option == 'edit':
-        edit_question = input(edit.EDIT_CATEGORY_QUESTION )
+        edit_question = input(edit.EDIT_CATEGORY_QUESTION)
         # clear_screen()
         if edit_question == '1':
             edit_item = input(edit.CHOOSE_SPECIFIC_ITEM)
@@ -209,4 +211,3 @@ while True:
         Help().display_help()
     else:
         print(message.VALID_MESSAGE)
-

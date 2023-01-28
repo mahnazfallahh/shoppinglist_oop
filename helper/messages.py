@@ -51,7 +51,7 @@ class DisplayBuyCategoryMessage(StrEnum):
     """
     BUY_CATEGORY_QUESTION = "which category do you want to buy ?"
     DISPLAY_FESTIVAL_MESSAGE = "we have a seasonal festival Here."
-    DISPLAY_ACCOUNT_MESSAGE = "if you choose discount code Your account balance will increase by 5%"
+    DISPLAY_ACCOUNT_MESSAGE = "if you choose discount code Your account balance will increase by 5%"  # noqa E501
 
 
 class AddCategoryMessage(StrEnum):
@@ -102,7 +102,3 @@ class SearchCategoryMessage(StrEnum):
 class DisplayUserQuestion(StrEnum):
     FIRST_NAME = "please enter your firstname:"
     LAST_NAME = "please enter your lastname:"
-    
-
-
-

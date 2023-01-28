@@ -33,4 +33,3 @@ class ExitCommands(Enum):
     q = 'q',
     e = 'e',
     Q = 'Q'
-

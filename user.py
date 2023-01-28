@@ -3,8 +3,8 @@ import logging.config
 from dataclasses import dataclass
 from helper.exceptions import PasswordIsShort, NameISNotStringException
 
-register: dict = dict()
 
+register: dict = dict()
 logger = logging.getLogger(__name__)
 
 
@@ -19,7 +19,7 @@ class EnterUserName:
         """ method to return firstname and lastname
         Parameters
         ----------
-        self 
+        self
         """
         return f'{self.first_name}{self.last_name}'
 
@@ -29,10 +29,10 @@ class BaseUser():
     """
     def __init__(self, username: str, password: int):
         """ constructor
-        method to initialize username and password 
+        method to initialize username and password
         Parameters
         ----------
-        variable1 : 
+        variable1 :
             self
         variable2 :
             username
@@ -40,14 +40,14 @@ class BaseUser():
             password
         """
         self.username = username
-        self.password = password    
-    
+        self.password = password
+
     @property
     def username(self):
         """ getter to get username
         Parameters
         ----------
-        variable1 : 
+        variable1 :
             self
         """
         return self.__username
@@ -57,9 +57,9 @@ class BaseUser():
         """ setter to set username
         Parameters
         ----------
-        variable1 : 
+        variable1 :
             self
-        variable1 : 
+        variable1 :
             value
         """
         if isinstance(value, int):
@@ -69,23 +69,22 @@ class BaseUser():
     @property
     def password(self):
         """ getter to get password
-
         Parameters
         ----------
-        variable1 : 
+        variable1 :
             self
         """
         return self.__password
-    
+
     @password.setter
-    def password(self, value:any):
+    def password(self, value: any):
         """ setter to set password
 
         Parameters
         ----------
-        variable1 : 
+        variable1 :
             self
-        variable1 : 
+        variable1 :
             value
         """
         if len(value) <= 3:
@@ -94,10 +93,9 @@ class BaseUser():
 
     def __str__(self):
         """ use magic method str to display user name and password.
-
         Parameters
         ----------
-        variable1 : 
+        variable1 :
             self
         """
         return f" {self.username} , {self.password}"
@@ -107,18 +105,19 @@ class User(BaseUser):
     """ class User which register and login user
         Parameters
         ----------
-        variable1 : 
+        variable1 :
             BaseUser is a parent class.
-    """    
+    """
+
     def register_user(self, username: str, password: any):
         """ method to initialize username and password .
         Parameters
         ----------
-        variable1 : 
+        variable1 :
             self
-        variable2 : 
+        variable2 :
             username
-        variable3 : 
+        variable3 :
             password
         """
         super().__init__(username, password)
@@ -128,9 +127,9 @@ class User(BaseUser):
         """ method to register user.
         Parameters
         ----------
-        variable1 : 
+        variable1 :
             username
-        variable2 : 
+        variable2 :
             password
         """
         with open('database/register.json', 'w') as user_register:
@@ -142,7 +141,7 @@ class User(BaseUser):
         """ method to login user.
         Parameters
         ----------
-        variable1 : 
+        variable1 :
             username
         """
         with open('database/register.json') as login_user:
@@ -152,4 +151,3 @@ class User(BaseUser):
                 logger.info(f'user {username} login successfully!!')
             else:
                 print('user name is not into the database .')
-
