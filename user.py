@@ -3,7 +3,7 @@ import logging.config
 from dataclasses import dataclass
 from helper.exceptions import PasswordIsShort, NameISNotStringException
 
-register:dict = dict()
+register: dict = dict()
 
 logger = logging.getLogger(__name__)
 
@@ -23,13 +23,13 @@ class EnterUserName:
         """
         return f'{self.first_name}{self.last_name}'
 
+
 class BaseUser():
     """ class BaseUser which give username and password
     """
-    def __init__(self, username:str, password:int):
+    def __init__(self, username: str, password: int):
         """ constructor
         method to initialize username and password 
-
         Parameters
         ----------
         variable1 : 
@@ -40,12 +40,10 @@ class BaseUser():
             password
         """
         self.username = username
-        self.password = password
-    
+        self.password = password    
     @property
     def username(self):
         """ getter to get username
-
         Parameters
         ----------
         variable1 : 
@@ -54,9 +52,8 @@ class BaseUser():
         return self.__username
 
     @username.setter
-    def username(self, value:str):
+    def username(self, value: str):
         """ setter to set username
-
         Parameters
         ----------
         variable1 : 
@@ -111,11 +108,9 @@ class User(BaseUser):
         ----------
         variable1 : 
             BaseUser is a parent class.
-    """
-    
-    def register_user(self ,username:str, password:any):
+    """    
+    def register_user(self ,username: str, password: any):
         """ method to initialize username and password .
-
         Parameters
         ----------
         variable1 : 
@@ -128,10 +123,8 @@ class User(BaseUser):
         super().__init__(username, password)
         return self
 
-
-    def register_file(username:str, password:any):
+    def register_file(username: str, password: any):
         """ method to register user.
-
         Parameters
         ----------
         variable1 : 
@@ -144,10 +137,8 @@ class User(BaseUser):
             json.dump(register, user_register)
             logger.info(f'user {username} registered successfully !!!')
 
-
-    def login_user(username:str):
+def login_user(username: str):
         """ method to login user.
-
         Parameters
         ----------
         variable1 : 
@@ -160,7 +151,4 @@ class User(BaseUser):
                 logger.info(f'user {username} login successfully!!')
             else:
                 print('user name is not into the database .')
-
-
-
         

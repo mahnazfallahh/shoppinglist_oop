@@ -1,3 +1,5 @@
+import os
+
 class Help:
     """ class Help which include help methods for user
     """

@@ -1,21 +1,22 @@
 import os
 import json
 import logging.config
+from userHelp import Help
 from getpass import getpass
 from shoppingList import Product
 from user import User, EnterUserName
-from userHelp import Help
 from helper.enums import ExitCommands, DiscountCodes
 from helper.exceptions import PasswordIsShort, NameISNotStringException
 from helper.messages import (ExitShoppingListMessage as msg,
+RemoveCategoryItemsMessage as remove,
 DisplayCategoryMessage as category,
 RaiseValidOptionMessage as message,
-DisplayBalanceMessage as balance,
 DisplayBuyCategoryMessage as buy,
-AddCategoryMessage as add,
-RemoveCategoryItemsMessage as remove,
+DisplayBalanceMessage as balance,
+SearchCategoryMessage as search,
 EditCategoryMessage as edit,
-SearchCategoryMessage as search,)
+AddCategoryMessage as add,
+DisplayUserQuestion as name)
 cosmetics_bill: list = list()
 vegetable_bill: list = list()
 grocery_bill: list = list()
@@ -26,8 +27,8 @@ logger = logging.getLogger(__name__)
 
 
 while True:
-    first_name = input('please enter your firstname:')
-    last_name = input('please enter your lastname:')
+    first_name = input(name.FIRST_NAME)
+    last_name = input(name.LAST_NAME)
     try:
         if first_name.isnumeric():
             raise NameISNotStringException
@@ -208,7 +209,3 @@ while True:
         Help().display_help()
     else:
         print(message.VALID_MESSAGE)
-
-
-
-    

@@ -89,3 +89,8 @@ class SearchCategoryMessage(StrEnum):
     SEARCH_CATEGORY_QUESTION = "which category do you want to search ?"
     SEARCH_INTENDED_ITEM = "please enter your intended item :"
 
+class DisplayUserQuestion(StrEnum):
+    FIRST_NAME = "please enter your firstname:"
+    LAST_NAME = "please enter your lastname:"
+
+
