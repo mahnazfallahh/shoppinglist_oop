@@ -1,6 +1,7 @@
 import random
 from enum import Enum
 
+
 class DiscountCodes(Enum):
     """ class discount which inheritance from Enum
     use to keep discount codes .

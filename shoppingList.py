@@ -47,7 +47,7 @@ class Product():
 
 
     @staticmethod
-    def use_discount(account_balance:int, code:str) -> int:
+    def use_discount(account_balance: int, code: str) -> int:
         """ method to calculate account balance which multiple it into 0.5 increase it and
         display to user 
         Parameters
@@ -114,7 +114,7 @@ class Product():
                 for key, value in data.items():
                     if line == key:
                         price: list = data[line]['price']
-                        product_number:int = int(category.get(line))
+                        product_number: int = int(category.get(line))
                         total_sum: int = price * product_number
                         category_bill.append(total_sum)
                         bill: int = sum(category_bill)
@@ -149,26 +149,26 @@ class Product():
         variable1 : 
             items_number is number of items which user want to add into list"""
         with open('database/grocery-items.json', 'r+') as user_list:
-                with open('database/shopping-list.json') as groceries:
-                    grocery: dict = json.load(groceries)
-                    # loop to iterate in items
-                    for item in range(items_number):
-                    # question from user
-                        items: str = input('please enter your grocery items: ')
-                        number_items: str = input('how many do you want from this item ?')
-                        if items not in grocery:
-                            print('OOops ! no such item is in shopping list.', "\N{slightly frowning face}")
-                            print("Sorry ! we can't add it into the list .", "\N{slightly frowning face}")
-                        else:
-                            grocery_items[items] = number_items
-                            products_number: int = len(grocery_items)
-                            print(f'{products_number} item added successfully in grocery list!!!')
-                            logger.info('user add item into grocery list')
-                            json.dump(grocery_items, user_list)
+            with open('database/shopping-list.json') as groceries:
+                grocery: dict = json.load(groceries)
+                # loop to iterate in items
+                for item in range(items_number):
+                # question from user
+                    items: str = input('please enter your grocery items: ')
+                    number_items: str = input('how many do you want from this item ?')
+                    if items not in grocery:
+                        print('OOops ! no such item is in shopping list.', "\N{slightly frowning face}")
+                        print("Sorry ! we can't add it into the list .", "\N{slightly frowning face}")
+                    else:
+                        grocery_items[items] = number_items
+                        products_number: int = len(grocery_items)
+                        print(f'{products_number} item added successfully in grocery list!!!')
+                        logger.info('user add item into grocery list')
+                        json.dump(grocery_items, user_list)
                         
 
     @staticmethod
-    def add_cosmetics(items_number:int) -> dict:
+    def add_cosmetics(items_number: int) -> dict:
         """ method to add into cosmetics list. 
         Parameters
         ----------
@@ -194,7 +194,7 @@ class Product():
 
 
     @staticmethod
-    def add_vegetable(items_number:int) -> dict:
+    def add_vegetable(items_number: int) -> dict:
         """ method to add into vegetable list. 
         Parameters
         ----------
@@ -217,7 +217,7 @@ class Product():
                         print(f'{products_number}item added successfully in vegetables list!!!')  #noqa E501
                         logger.info('user add item into grocery list')
                         json.dump(vegetable_items, user_list)
-                    
+
 
     @staticmethod
     def show_category(files):
@@ -250,22 +250,22 @@ class Product():
                     print('OOoops ! no such item is in shopping list.')
 
     @staticmethod
-    def remove_cosmetics(item:str) -> str:
+    def remove_cosmetics(item: str) -> str:
         """ method to remove item in cosmetics list. 
         Parameters
         ----------
         variable1 : 
             is specific item which user want to remove into the list"""
         with open('database/cosmetics-items.json') as cosmetics:
-                data = json.load(cosmetics)
-                if item in data:
-                    data.pop(item)
-                    with open('database/cosmetics-items.json', 'w') as files:
-                        json.dump(data, files)
-                        print(f'{item} removed from cosmetics list.')
-                        logger.info(f'user removed {item} into grocery list')
-                else:
-                    print('OOoops ! no such item is in shopping list.')
+            data = json.load(cosmetics)
+            if item in data:
+                data.pop(item)
+                with open('database/cosmetics-items.json', 'w') as files:
+                    json.dump(data, files)
+                    print(f'{item} removed from cosmetics list.')
+                    logger.info(f'user removed {item} into grocery list')
+            else:
+                print('OOoops ! no such item is in shopping list.')
 
     @staticmethod
     def remove_vegetable(item: str) -> str:
@@ -345,23 +345,23 @@ class Product():
         variable2 : 
             item_edit_with is specific item which user want to edit it with edit_item"""
         with open('database/shopping-list.json') as files:
-                data = json.load(files)
-                with open('database/vegetable-items.json') as vegetables:
-                    vegetable = json.load(vegetables)
-                    if edit_item in vegetable:
-                        if item_edit_with in data:
-                            vegetable[item_edit_with] = vegetable.pop(edit_item)  #noqa E501
-                            with open('database/vegetable-items.json', 'w') as files:  #noqa E501
-                                json.dump(vegetable, files)
-                                print(f'{edit_item} modified into {item_edit_with} in your vegetable list.')  #noqa E501
-                                logger.info(f'{edit_item} modified into {item_edit_with} in  grocery list.')  #noqa E501
-                        else:
-                            print('OOoops ! no such item is in shopping list.')
+            data = json.load(files)
+            with open('database/vegetable-items.json') as vegetables:
+                vegetable = json.load(vegetables)
+                if edit_item in vegetable:
+                    if item_edit_with in data:
+                        vegetable[item_edit_with] = vegetable.pop(edit_item)  #noqa E501
+                        with open('database/vegetable-items.json', 'w') as files:  #noqa E501
+                            json.dump(vegetable, files)
+                            print(f'{edit_item} modified into {item_edit_with} in your vegetable list.')  #noqa E501
+                            logger.info(f'{edit_item} modified into {item_edit_with} in  grocery list.')  #noqa E501
                     else:
                         print('OOoops ! no such item is in shopping list.')
+                else:
+                    print('OOoops ! no such item is in shopping list.')
 
     @staticmethod
-    def search_grocery(search_item:str) -> str:
+    def search_grocery(search_item: str) -> str:
         """ method to search item in grocery list. 
         Parameters
         ----------

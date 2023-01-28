@@ -37,10 +37,10 @@ while True:
     else:
         information = EnterUserName(first_name, last_name)
         print(f"Hi {information} . welcome to shopping list. ")
-        logger.info(f'user {first_name} {last_name} arrived into shopping list . ')  #noqa:E501
+        logger.info(f'user {first_name} {last_name} arrived into shopping list . ')  #noqa E501
         logger.info(f"os user name: {os.getlogin()}")
         break        
-os.system ('pause')
+os.system('pause')
 
 
 is_authenticated = False
@@ -57,8 +57,8 @@ while is_authenticated == False:
                     print('OOoops !! invalid option , please try again .')
                     break
                 else:
-                    password= getpass('enter password :')
-                    user = User(username, password )
+                    password = getpass('enter password :')
+                    user = User(username, password)
                     User.register_file(username, password)
                     print('register successfully done !!!')
                     print('to continue please login .')
@@ -77,7 +77,7 @@ while is_authenticated == False:
                     User.login_user(username)
                     is_authenticated = True
                     is_login = True
-    except PasswordIsShort as e :
+    except PasswordIsShort as e:
             print(e)
 Help().display_help()
 
@@ -95,13 +95,13 @@ while True:
     if option == 'price':
         question = input(category.DISPLAY_MESSAGE)
         if question == '1':
-            print("\N{peanuts}" ,"GROCERY PRICES", "\N{peanuts}")
+            print("\N{peanuts}", "GROCERY PRICES", "\N{peanuts}")
             Product().grocery_price()
         elif question == '2':
-            print("\N{nail polish}" , "COSMETICS PRICES", "\N{nail polish}")
+            print("\N{nail polish}", "COSMETICS PRICES", "\N{nail polish}")
             Product().cosmetics_price()
         elif question == '3':
-            print("\N{leafy green}" , "VEGETABLE PRICES", "\N{leafy green}" )
+            print("\N{leafy green}", "VEGETABLE PRICES", "\N{leafy green}")
             Product().vegetable_price()
         else:
             print(message.VALID_MESSAGE)
@@ -111,22 +111,22 @@ while True:
         print(buy.DISPLAY_ACCOUNT_MESSAGE, "\N{face with monocle}")
         code = DiscountCodes.get_random_code()
         print(f"your discount code is {code}")
-        account_balance:int = int(input(balance.ACCOUNT_BALANCE))
+        account_balance: int = int(input(balance.ACCOUNT_BALANCE))
         Product().use_discount(account_balance, code)
         # clear_screen()
-        question:str = input(buy.BUY_CATEGORY_QUESTION)
+        question: str = input(buy.BUY_CATEGORY_QUESTION)
         if question == '1':
-            grocery:str = 'grocery'
+            grocery: str = 'grocery'
             with open('database/grocery-items.json') as groceries:
-                Product().buy_categories(groceries, grocery_bill, grocery, account_balance)  #noqa:E501
+                Product().buy_categories(groceries, grocery_bill, grocery, account_balance)  #noqa E501
         elif question == '2':
-            cosmetic:str = 'cosmetic'
+            cosmetic: str = 'cosmetic'
             with open('database/cosmetics-items.json') as cosmetics:
-                Product().buy_categories(cosmetics, cosmetics_bill, cosmetic, account_balance)  #noqa:E501
+                Product().buy_categories(cosmetics, cosmetics_bill, cosmetic, account_balance)  #noqa E501
         elif question == '3':
-            vegetable:str = 'vegetable'
+            vegetable: str = 'vegetable'
             with open('database/vegetable-items.json') as vegetables:
-                Product().buy_categories(vegetables, vegetable_bill, vegetable, account_balance)  #noqa:E501
+                Product().buy_categories(vegetables, vegetable_bill, vegetable, account_balance)  #noqa E501
         else:
             print(message.VALID_MESSAGE)   
     elif option == 'add':
@@ -136,13 +136,13 @@ while True:
         # clear_screen()
         # condition if question equal to 1
         if question == '1':
-            items_number:int = int(input(add.NUMBER_ITEM_QUESTION))
+            items_number: int = int(input(add.NUMBER_ITEM_QUESTION))
             Product().add_grocery(items_number)
         elif question == '2':
-            items_number:int = int(input(add.NUMBER_ITEM_QUESTION))
+            items_number: int = int(input(add.NUMBER_ITEM_QUESTION))
             Product().add_cosmetics(items_number)
         elif question == '3':
-            items_number:int = int(input(add.NUMBER_ITEM_QUESTION))
+            items_number: int = int(input(add.NUMBER_ITEM_QUESTION))
             Product().add_vegetable(items_number)
         else:
             print(message.VALID_MESSAGE)    
@@ -191,7 +191,7 @@ while True:
         else:
             print(message.VALID_MESSAGE)
     elif option == 'search':
-        question:str = input(search.SEARCH_CATEGORY_QUESTION)
+        question: str = input(search.SEARCH_CATEGORY_QUESTION)
         if question == '1':
             search_item = input(search.SEARCH_INTENDED_ITEM)
             Product().search_grocery(search_item)
@@ -209,3 +209,4 @@ while True:
         Help().display_help()
     else:
         print(message.VALID_MESSAGE)
+

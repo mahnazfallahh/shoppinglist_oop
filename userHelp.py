@@ -1,5 +1,6 @@
 import os
 
+
 class Help:
     """ class Help which include help methods for user
     """
@@ -11,6 +12,7 @@ class Help:
         with open('database\help.txt') as files:
             data = files.read()
             print(data)
+
     @staticmethod
     def clear_screen():
         """ func to clear screen"""

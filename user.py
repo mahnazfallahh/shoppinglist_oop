@@ -41,6 +41,7 @@ class BaseUser():
         """
         self.username = username
         self.password = password    
+    
     @property
     def username(self):
         """ getter to get username
@@ -109,7 +110,7 @@ class User(BaseUser):
         variable1 : 
             BaseUser is a parent class.
     """    
-    def register_user(self ,username: str, password: any):
+    def register_user(self, username: str, password: any):
         """ method to initialize username and password .
         Parameters
         ----------
@@ -137,7 +138,7 @@ class User(BaseUser):
             json.dump(register, user_register)
             logger.info(f'user {username} registered successfully !!!')
 
-def login_user(username: str):
+    def login_user(username: str):
         """ method to login user.
         Parameters
         ----------
@@ -151,4 +152,4 @@ def login_user(username: str):
                 logger.info(f'user {username} login successfully!!')
             else:
                 print('user name is not into the database .')
-        
+
