@@ -28,12 +28,33 @@ class PasswordDescriptors:
     """ class PasswordDescriptors which include password descriptors
     """
     def __set_name__(self, owner, title):
+        """ method to set name
+        Parameters
+        ----------
+        self
+        owner
+        title
+        """
         self.title = title
 
     def __get__(self, instance, owner):
+        """ method to get password
+        Parameters
+        ----------
+        self
+        instance
+        owner
+        """
         return instance.__dict__[self.title]
 
     def __set__(self, instance, value):
+        """ method to check password
+        Parameters
+        ----------
+        self
+        instance
+        value
+        """
         if len(value) <= 3:
             raise PasswordIsShort
         instance.__dict__[self.title] = value
@@ -43,12 +64,33 @@ class UserNameDescriptors:
     """ class UserNameDescriptors which include username descriptors
     """
     def __set_name__(self, owner, title):
+        """ method to set name
+        Parameters
+        ----------
+        self
+        owner
+        title
+        """
         self.title = title
 
     def __get__(self, instance, owner):
+        """ method to get username
+        Parameters
+        ----------
+        self
+        instance
+        owner
+        """
         return instance.__dict__[self.title]
 
     def __set__(self, instance, value):
+        """ method to check username
+        Parameters
+        ----------
+        self
+        instance
+        value
+        """
         if not isinstance(value, str):
             raise NameISNotStringException
         instance.__dict__[self.title] = value
