@@ -1,12 +1,13 @@
 import os
 import logging.config
-from userHelp import Help
+from kernel.user_help import Help
 from getpass import getpass
-from shoppingList import Product
-from user import User, EnterUserName
-from helper.enums import ExitCommands, DiscountCodes
-from helper.exceptions import PasswordIsShort, NameISNotStringException
-from helper.messages import (
+from kernel.shopping_list import Product
+from kernel.user import User, EnterUserName
+from painless.helper.enums import ExitCommands, DiscountCodes
+from painless.helper.exceptions import PasswordIsShort, NameISNotStringException # noqa E501
+from kernel.shopping_list import main
+from painless.helper.messages import (
     ExitShoppingListMessage as msg,
     RemoveCategoryItemsMessage as remove,
     DisplayCategoryMessage as category,
@@ -24,10 +25,11 @@ vegetable_bill: list = list()
 grocery_bill: list = list()
 
 
-logging.config.fileConfig(fname='Log/config.toml', disable_existing_loggers=False)  # noqa:E501
+logging.config.fileConfig(fname='Log/config.toml', disable_existing_loggers=False)  # noqa E501
 logger = logging.getLogger(__name__)
 
-
+if __name__ == '__main__':
+    main()
 while True:
     first_name = input(name.FIRST_NAME)
     last_name = input(name.LAST_NAME)
