@@ -1,12 +1,13 @@
 import os
 import logging.config
-from kernel.user_help import Help
 from getpass import getpass
+from kernel.user_help import Help
+# from kernel.shopping_list import main
 from kernel.shopping_list import Product
+from painless.design.creational.factory import client
 from kernel.user import User, EnterUserName
 from painless.helper.enums import ExitCommands, DiscountCodes
 from painless.helper.exceptions import PasswordIsShort, NameISNotStringException # noqa E501
-from kernel.shopping_list import main
 from painless.helper.messages import (
     ExitShoppingListMessage as msg,
     RemoveCategoryItemsMessage as remove,
@@ -28,8 +29,8 @@ grocery_bill: list = list()
 logging.config.fileConfig(fname='Log/config.toml', disable_existing_loggers=False)  # noqa E501
 logger = logging.getLogger(__name__)
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
 while True:
     first_name = input(name.FIRST_NAME)
     last_name = input(name.LAST_NAME)
@@ -97,18 +98,8 @@ while True:
             logger.info('user exited from shop !!!!')
             break
     if option == 'price':
-        question = input(category.DISPLAY_MESSAGE)
-        if question == '1':
-            print("\N{peanuts}", "GROCERY PRICES", "\N{peanuts}")
-            Product().grocery_price()
-        elif question == '2':
-            print("\N{nail polish}", "COSMETICS PRICES", "\N{nail polish}")
-            Product().cosmetics_price()
-        elif question == '3':
-            print("\N{leafy green}", "VEGETABLE PRICES", "\N{leafy green}")
-            Product().vegetable_price()
-        else:
-            print(message.VALID_MESSAGE)
+        category = input('please enter intended category:')
+        print(client(category, 'category'))
     elif option == 'buy':
         print("\N{money bag}")
         print(buy.DISPLAY_FESTIVAL_MESSAGE, "\N{face with monocle}")

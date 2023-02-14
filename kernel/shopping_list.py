@@ -1,9 +1,9 @@
 import json
 import datetime
-import pandas as pd
 import logging.config
 from json import JSONEncoder
-from database import db
+# from database import db
+# from database.models import User
 
 
 grocery_items: dict = dict()
@@ -16,8 +16,10 @@ user_history: dict = dict()
 logger = logging.getLogger('admin')
 
 
-def main():
-    print(db.engine.connect())
+# def main():
+#     user = User.create(
+#         username='sodabeh',
+#         password='1234')
 
 
 class DateTimeEncoder(JSONEncoder):
@@ -63,36 +65,6 @@ class Product():
             code which it's discount code ."""
         result = account_balance * 0.5
         print(f"your account balance is {result} dollars now", "\N{money bag}")
-
-    @staticmethod
-    def grocery_price():
-        """ method for display grocery prices and items in one simple table """
-        data = {
-            '': [90000, 1000, 80000]
-        }
-        grocery = pd.DataFrame(data, index=['walnut', 'rice', 'sugar'])
-        print(grocery)
-        logger.info('user see grocery prices !!')
-
-    @staticmethod
-    def vegetable_price():
-        """ method for display vegetable prices and items in one simple table """ # noqa E501
-        data = {
-            '': [4000, 40000, 1000]
-        }
-        vegetable = pd.DataFrame(data, index=['cucumber', 'carrot', 'lettuce'])
-        print(vegetable)
-        logger.info('user see vegetable prices !!')
-
-    @staticmethod
-    def cosmetics_price():
-        """ method for display cosmetics prices and items in one simple table """ # noqa E501
-        data = {
-            '': [3400000, 1200, 340000]
-        }
-        cosmetics = pd.DataFrame(data, index=['lipstick', 'cream', 'spray'])
-        print(cosmetics)
-        logger.info('user see cosmetics prices !!')
 
     @staticmethod
     def buy_categories(
